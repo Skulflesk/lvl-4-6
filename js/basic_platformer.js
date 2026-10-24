@@ -113,7 +113,7 @@ function animate()
 	}
 	while(platform2.hitTestPoint(player.right()) && player.vx >=0)
 	{
-		player.x--;
+		player.x++;
 		player.vx = 0;
 	}
 	
@@ -121,11 +121,15 @@ function animate()
 	//---------Run this program first.
 	//---------Change the following condition so that the player pushes the wall-------------------------------------------------
 
-	while(platform1.hitTestPoint(player.left()))
-	{
-		player.x++;
-	}
-	
+	while(platform1.hitTestPoint(player.left()) && player.vx >= 0)
+{
+    platform1.x += player.vx;
+    player.x++;
+}
+if(platform1.hitTestObject(player))
+{
+    platform1.vx = -10;
+}
 	
 
 	
